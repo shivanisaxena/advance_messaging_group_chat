@@ -14,7 +14,7 @@ def send_to_all (sock,l, message):
 				socket.close()
 				connected_lists[l].remove(socket)
 				connected_list.remove(socket)
-def choices(l,sock,option):
+def choices(l,sock,option2):
 	if option2==1:
 		list_file()
 	if option2==2:
@@ -167,12 +167,12 @@ if __name__ == "__main__":
                                                         send_to_all(sockfd,l, "\33[32m\33[1m\r "+str(name)+" joined the conversation \n\33[0m")
                                                         sockfd.send("\33[36m\r\33[1m What you wnat to do?\n 1.List files\n2.Upload files\n3.Download files\n4.Delete file\n5.Share file\n6.Show log\n7.chat\n8.sign out\n\33[0m".encode())
                                                         option2=sockfd.recv(buffer)
-                                                        
+                                                        k=int(option2)
                                                         option2=int(option2)
                                                         if option2==7:
                                                         	start_new_thread(client_thread,(l,sockfd,))
                                                         else:
-                                                        	choices(l,sockfd,option2)                                                       
+                                                        	choices(l,sockfd,k)                                                       
 					else:
                                                         sockfd.send("\33[31m\33[1m \r              username does not exist\33[0m".encode())
                                                         f.close()
@@ -219,12 +219,12 @@ if __name__ == "__main__":
                                                         send_to_all(sockfd,l, "\33[32m\33[1m\r "+str(name)+" joined the conversation \n\33[0m")
                                                         sockfd.send("\33[36m\r\33[1m What you wnat to do?\n 1.List files\n2.Upload files\n3.Download files\n4.Delete file\n5.Share file\n6.Show log\n7.chat\n8.sign out\n\33[0m".encode())
                                                         option2=sockfd.recv(buffer)
-                                                        
-                                                        option2=int(option2)
-                                                        if option2==7:
+                                                        option2=option2.decode()
+                                                        k=int(option2)
+                                                        if k==7:
                                                         	start_new_thread(client_thread,(l,sockfd,))
                                                         else:
-                                                        	choices(l,sock,option2)
+                                                        	choices(l,sockfd,k)
 					else:
                                                         sockfd.send("\33[31m\33[1m \r              username does not exist\33[0m".encode())
                                                         f.close()
@@ -273,12 +273,12 @@ if __name__ == "__main__":
 						send_to_all(sockfd,l, "\33[32m\33[1m\r "+str(name)+" joined the conversation \n\33[0m")
 						sockfd.send("\33[36m\r\33[1m What you wnat to do?\n 1.List files\n2.Upload files\n3.Download files\n4.Delete file\n5.Share file\n6.Show log\n7.chat\n8.sign out\n\33[0m".encode())
 						option2=sockfd.recv(buffer)
-						
-						option2=int(option2)
-						if option2==7:
+						option2=option2.decode()
+						k=int(option2)
+						if k==7:
                                                         	start_new_thread(client_thread,(l,sockfd,))
 						else:
-							choices(l,sock,option2)
+							choices(l,sock,k)
 
 				if l==2 and flag2==0:
 					
@@ -294,12 +294,12 @@ if __name__ == "__main__":
 				
 						sockfd.send("\33[36m\r\33[1m What you wnat to do?\n 1.List files\n2.Upload files\n3.Download files\n4.Delete file\n5.Share file\n6.Show log\n7.chat\n8.sign out\n\33[0m".encode())
 						option2=sockfd.recv(buffer)
-						
-						option2=int(option2)
-						if option2==7:
+						option2=option2.decode()
+						k=int(option2)
+						if k==7:
                                                         	start_new_thread(client_thread,(l,sockfd,))
 						else:
-							choices(l,sock,option2)
+							choices(l,sock,k)
 						
 			#Some incoming message from a client
 			
