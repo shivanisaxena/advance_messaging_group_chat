@@ -59,21 +59,7 @@ def client_thread(l,sock):
                     
                     #get addr of client sending the message
 					(i,p)=sock.getpeername()
-					#if int(data1)==8:
-                                        	#if l==1:
-                                                        #send_to_all(sock,l, "\r\33[31m \33[1m"+str(record1[(i,p)])+" left the conversation unexpectedly\33[0m\n")
-                                                        #print("Client (%s, %s) is offline (error)" % (i,p)," [",record1[(i,p)],"]\n")
-                                                        #del record1[(i,p)]
-                                                #else:
-                                                        #send_to_all(sock,l, "\r\33[31m \33[1m"+str(record2[(i,p)])+" left the conversation unexpectedly\33[0m\n")
-                                                        #print("Client (%s, %s) is offline (error)" % (i,p)," [",record2[(i,p)],"]\n")
-                                                        #del record2[(i,p)]
-                                                #connected_list.remove(sock)
-                                                #connected_lists[l].remove(sock)
-                                                #sock.close()
-                                                #continue
-
-					if int(data1) ==8:
+					if data =='':
 						if l==1:
 							msg="\r\33[1m"+"\33[31m "+str(record1[(i,p)])+" left the conversation \33[0m\n"
 							send_to_all(sock,l,msg)
