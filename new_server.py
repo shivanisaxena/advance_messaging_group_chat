@@ -14,11 +14,34 @@ def send_to_all (sock,l, message):
 				socket.close()
 				connected_lists[l].remove(socket)
 				connected_list.remove(socket)
+				
+def upload_file(conn,l):
+    conn.send("upload\n".encode())
+    file=open(pickle.loads(conn.recv(1024)),"w")
+    data = conn.recv(4096)
+    file.write(pickle.loads(data))
+    file.close()
+    (i,p)=sock.getpeername()
+    if l==1:
+                        send_to_all(sock,l, "\r\33[31m \33[1m"+str(record1[(i,p)])+" left the conversation\33[0m\n")
+                        print("Client (%s, %s) is offline (error)" % (i,p)," [",record1[(i,p)],"]\n")
+                        del record1[(i,p)]
+    if l==2:
+                        send_to_all(sock,l, "\r\33[31m \33[1m"+str(record2[(i,p)])+" left the conversation\33[0m\n")
+                        print("Client (%s, %s) is offline (error)" % (i,p)," [",record2[(i,p)],"]\n")
+                        del record2[(i,p)]
+    connected_list.remove(sock)
+    connected_lists[l].remove(sock)
+    sock.close()				
+				
+				
+				
+				
 def choices(l,sock,option2):
 	if option2==1:
 		list_file()
 	if option2==2:
-		upload_file()
+		upload_file(sock,l)
 	if option2==3:
 		download_file()
 	if option2==4:
