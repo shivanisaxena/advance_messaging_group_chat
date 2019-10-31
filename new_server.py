@@ -271,7 +271,7 @@ if __name__ == "__main__":
 						print("Client (%s, %s) connected" % addr," [",record1[addr],"]")
 						sockfd.send("\33[32m\r\33[1m WELCOME TO THE WORLD OF MACHINE LEARNING\n\33[0m".encode())
 						send_to_all(sockfd,l, "\33[32m\33[1m\r "+str(name)+" joined the conversation \n\33[0m")
-						sockfd.send("\33[36m\r\33[1m What you wnat to do?\n 1.List files\n2.Upload files\n3.Download files\n4.Delete file\n5.Share file\n6.Show log\n7.chat\n8.sign out\n\33[0m".encode())
+						sockfd.send("\33[36m\r\33[1m What you wnat to do?\n 1.List files\n2.Upload files\n3.Download files\n4.Delete file\n5.Share file\n6.Show log\n7.chat\n\33[0m".encode())
 						option2=sockfd.recv(buffer)
 						option2=option2.decode()
 						k=int(option2)
@@ -292,7 +292,7 @@ if __name__ == "__main__":
 						send_to_all(sockfd,l, "\33[32m\33[1m\r "+str(name)+" joined the conversation \n\33[0m")
 						
 				
-						sockfd.send("\33[36m\r\33[1m What you wnat to do?\n 1.List files\n2.Upload files\n3.Download files\n4.Delete file\n5.Share file\n6.Show log\n7.chat\n8.sign out\n\33[0m".encode())
+						sockfd.send("\33[36m\r\33[1m What you wnat to do?\n 1.List files\n2.Upload files\n3.Download files\n4.Delete file\n5.Share file\n6.Show log\n7.chat\n\33[0m".encode())
 						option2=sockfd.recv(buffer)
 						option2=option2.decode()
 						k=int(option2)
