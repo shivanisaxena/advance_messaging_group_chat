@@ -10,7 +10,7 @@ def main():
 
     
     host = socket.gethostname()
-    port = 5008
+    port = 5010
     
     #ask for group id
     q='''\33[32m\r\33[1m which group you want to join?
